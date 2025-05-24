@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travola - Discover Japan</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- <div class="logo">TRAVOLA JOURNEYS</div> -->
+            <div class="logo">
+                <a href="#">
+                    <img src="images/logo-icon.png" alt="logo" class="one">
+                    <img src="images/logo-wordmark.png" alt="Travola" class="two">
+                </a>
+            </div>
+            <ul>
+                <li><a href="#hero-section">Home</a></li>
+                <li><a href="#featured-journeys">Tours</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-toggle">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+    </header>
+
+    <section id="hero-section" class="hero-background">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1 class="animate-fade-in-up">
+                DISCOVER THE ENCHANTING BEAUTY OF JAPAN
+            </h1>
+            <p class="animate-fade-in delay-1s">
+                Embark on an unforgettable journey through ancient traditions, vibrant modern cities, and breathtaking natural landscapes.
+            </p>
+            <button class="btn-primary animate-fade-in delay-2s">
+                Explore Our Journeys
+            </button>
+        </div>
+    </section>
+
+    <section id="featured-journeys">
+        <div class="section-overlay dark-overlay"></div>
+        <div class="container section-content-wrapper">
+            <h2 class="section-title animate-on-scroll">Featured Journeys</h2>
+            <div class="grid-cols-responsive lg-4-cols">
+                <div class="card animate-on-scroll fade-in-up-stagger" data-destination="kyoto">
+                    <img src="images/kyoto.png" alt="Kyoto Temples">
+                    <div class="card-content">
+                        <h3>Ancient Kyoto</h3>
+                        <p>Explore historic temples, serene gardens, and traditional tea houses.</p>
+                        <button class="btn-primary view-details-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll fade-in-up-stagger" data-destination="tokyo">
+                    <img src="images/tokyo.png" alt="Tokyo Neon City">
+                    <div class="card-content">
+                        <h3>Vibrant Tokyo</h3>
+                        <p>Experience the bustling energy of Tokyo's districts and futuristic cityscape.</p>
+                        <button class="btn-primary view-details-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll fade-in-up-stagger" data-destination="fuji">
+                    <img src="images/fuji.png" alt="Mount Fuji">
+                    <div class="card-content">
+                        <h3>Majestic Fuji</h3>
+                        <p>Witness the iconic beauty of Mount Fuji and its surrounding serene lakes.</p>
+                        <button class="btn-primary view-details-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="card animate-on-scroll fade-in-up-stagger" data-destination="hokkaido">
+                    <img src="images/hokkaido.png" alt="Hokkaido Snow">
+                    <div class="card-content">
+                        <h3>Snowy Hokkaido</h3>
+                        <p>Discover winter wonderland adventures and pristine natural beauty.</p>
+                        <button class="btn-primary view-details-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about-us">
+        <div class="section-overlay card-overlay"></div>
+        <div class="container about-section section-content-wrapper">
+            <div class="image-col animate-on-scroll slide-in-left">
+                <img src="images/about-japan-street.jpg" alt="Travel Character">
+            </div>
+            <div class="text-col animate-on-scroll slide-in-right">
+                <h2 class="section-title">Uncover a World of Wonder</h2>
+                <p>
+                    At Travola Journeys, we believe travel is an art form. Our expertly curated tours are designed to immerse you in the heart of Japan, offering unique experiences that blend cultural authenticity with modern comfort. From the bustling streets of Shibuya to the tranquil temples of Kyoto, let us guide your adventure and create memories that last a lifetime.
+                </p>
+                <button class="btn-primary">
+                    Learn More About Us
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="journey-planner">
+        <div class="section-overlay dark-overlay"></div>
+        <div class="container section-content-wrapper">
+            <h2 class="section-title animate-on-scroll">Your Personalized Journey</h2>
+            <div class="form-container animate-on-scroll">
+                <p class="text-lg text-center" style="color: var(--color-text-light); margin-bottom: 1.5rem;">
+                    Tell us your travel preferences or dream trip, and let our AI craft a unique itinerary just for you!
+                </p>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label for="plannerPrompt">What kind of adventure are you looking for?</label>
+                    <textarea id="plannerPrompt" rows="4" placeholder="e.g., 'A historical exploration, visiting ancient castles and shrines', or 'A relaxing trip through scenic landscapes with hot springs.'"></textarea>
+                </div>
+                <div class="form-submit-center">
+                    <button id="generateItineraryBtn" class="btn-primary">
+                        Generate My Journey
+                    </button>
+                    <div id="plannerLoading" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Crafting your journey...
+                    </div>
+                     <button id="resetPlannerBtn" class="btn-secondary" style="display: none;">Reset</button>
+                </div>
+                <div id="itineraryOutput">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="section-overlay card-overlay"></div>
+        <div class="container section-content-wrapper">
+            <h2 class="section-title animate-on-scroll">Gallery of Memories</h2>
+            <div class="grid-cols-responsive lg-4-cols">
+                <div class="card animate-on-scroll fade-in-up-stagger">
+                    <img src="images/1.jpg" alt="Cherry Blossoms">
+                </div>
+                <div class="card animate-on-scroll fade-in-up-stagger">
+                    <img src="images/2.jpg" alt="Japanese Garden">
+                </div>
+                <div class="card animate-on-scroll fade-in-up-stagger">
+                    <img src="images/3.jpg" alt="Shinjuku Gyoen">
+                </div>
+                <div class="card animate-on-scroll fade-in-up-stagger">
+                    <img src="images/4.jpg" alt="Osaka Castle">
+                </div>
+                <div class="card animate-on-scroll fade-in-up-stagger">
+                    <img src="images/5.jpg" alt="Arashiyama Bamboo Forest">
+                </div>
+                <div class="card animate-on-scroll fade-in-up-stagger">
+                    <img src="images/6.jpg" alt="Fushimi Inari Shrine">
+                </div>
+                <div class="card animate-on-scroll fade-in-up-stagger">
+                    <img src="images/7.jpg" alt="Hiroshima Peace Park">
+                </div>
+                <div class="card animate-on-scroll fade-in-up-stagger">
+                    <img src="images/8.jpg" alt="Nara Deer Park">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="traveler-stories">
+        <div class="section-overlay dark-overlay"></div>
+        <div class="container section-content-wrapper">
+            <h2 class="section-title animate-on-scroll">Traveler Stories</h2>
+            <div class="grid-cols-responsive">
+                <div class="traveler-story animate-on-scroll fade-in-up-stagger">
+                    <p class="italic">
+                        "Travola Journeys truly brought my travel dreams to life! The trip felt like stepping into a beautiful story, with breathtaking landscapes and vibrant cityscapes. The personalized recommendations were spot on!"
+                    </p>
+                    <div class="author-info">
+                        <img src="https://placehold.co/60x60/18181A/FFFFFF?text=A" alt="Traveler Avatar">
+                        <div>
+                            <p class="name">Anya S., Avid Traveler</p>
+                            <p class="details">Visited Kyoto & Tokyo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="traveler-story animate-on-scroll fade-in-up-stagger">
+                    <p class="italic">
+                        "Our serene journey through Japan was unforgettable. Every detail was handled, and the AI planner even suggested a hidden gem of a ramen shop that was an absolute delight!"
+                    </p>
+                    <div class="author-info">
+                        <img src="https://placehold.co/60x60/18181A/FFFFFF?text=B" alt="Traveler Avatar">
+                        <div>
+                            <p class="name">Kenji T., Culture Seeker</p>
+                            <p class="details">Explored Fuji & Nara</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-overlay card-overlay"></div>
+        <div class="container section-content-wrapper">
+            <h2 class="section-title animate-on-scroll">Plan Your Dream Journey</h2>
+            <div class="form-container animate-on-scroll">
+                <form>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Full Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email Address">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 2rem;">
+                        <label for="destination-contact">Preferred Destination</label>
+                        <select id="destination-contact" name="destination">
+                            <option value="">Select a Destination</option>
+                            <option value="kyoto">Kyoto - Ancient Temples & Gardens</option>
+                            <option value="tokyo">Tokyo - Modern Metropolis & Culture</option>
+                            <option value="fuji">Mount Fuji Area - Iconic Views & Nature</option>
+                            <option value="hokkaido">Hokkaido - Winter Sports & Scenery</option>
+                            <option value="osaka">Osaka - Food & Nightlife</soption>
+                            <option value="other">Other / Not Sure Yet</option>
+                        </select>
+                    </div>
+                    <div class="form-group textarea">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Tell us about your dream trip, interests, and any specific requests..."></textarea>
+                    </div>
+                    <div class="form-submit-center">
+                        <button type="submit" class="btn-primary">
+                            Submit Inquiry
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="section-overlay dark-overlay"></div>
+        <div class="container section-content-wrapper">
+            <p>&copy; 2025 Travola Journeys. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="destinationModal" class="modal-overlay hidden">
+        <div class="modal-content text-center">
+            <button class="modal-close-btn">&times;</button>
+            <h3 id="modalTitle" class="section-title" style="font-size: 1.875rem; margin-bottom: 1rem;"></h3>
+            <img id="modalImage" src="" alt="" style="width: 90%; height: 90%; object-fit: cover; border-radius: 0.5rem; margin-bottom: 1.5rem; padding-left: 5%;">
+            <p id="modalDescription" style="font-size: 1.125rem; color: var(--color-text-light); margin-bottom: 1.5rem; line-height: 1.625;"></p>
+            <button class="btn-primary" style="padding: 0.75rem 2rem; font-size: 1.125rem;">Book This Journey</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
