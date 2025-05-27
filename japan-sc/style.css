@@ -713,7 +713,6 @@ section {
 
 .footer-logo img {
     height: 50px;
-    filter: brightness(0) invert(1); /* Makes logo white for dark background */
     margin-bottom: 15px;
 }
 
